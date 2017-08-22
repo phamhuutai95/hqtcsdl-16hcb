@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MenuRoot>
+  <Menu permissionkey="0" id="home" text="Trang chủ" url="/"></Menu>
+  <Menu permissionkey="0" text="Người dùng" url="#f">
+    <SubMenu permissionkey="0" text="Quản lý giáo viên" url="/quan-ly-giao-vien"></SubMenu>
+    <SubMenu permissionkey="0" text="Quản lý nhóm người dùng" url="/quan-ly-nhom-nguoi-dung"></SubMenu>
+  </Menu>
+  <Menu permissionkey="0" text="Câu hỏi" url="#f">
+    <SubMenu permissionkey="0" text="Quản lý câu hỏi" url="/quan-ly-cau-hoi"></SubMenu>
+    <SubMenu permissionkey="0" text="Quản lý điểm học sinh" url="/quan-ly-diem"> </SubMenu>
+    <SubMenu permissionkey="0" text="Tạo đề thi" url="/tao-de-thi"></SubMenu>
+    <SubMenu permissionkey="0" text="Quản lý đề thi" url="/quan-ly-de-thi"></SubMenu>
+  </Menu>
+  <Menu permissionkey="0" text="Quản lý môn học" url="/quan-ly-mon-hoc"></Menu>
+</MenuRoot>

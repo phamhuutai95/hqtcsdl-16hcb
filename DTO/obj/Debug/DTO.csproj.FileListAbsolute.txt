@@ -1,0 +1,5 @@
+D:\00-HuuTai\Hoctap\HCDH\HK2_2016-2017\HQTCSDL\LyThuyet\BaiNop\ProjectQuestionManagement\DTO\bin\Debug\DTO.dll
+D:\00-HuuTai\Hoctap\HCDH\HK2_2016-2017\HQTCSDL\LyThuyet\BaiNop\ProjectQuestionManagement\DTO\bin\Debug\DTO.pdb
+D:\00-HuuTai\Hoctap\HCDH\HK2_2016-2017\HQTCSDL\LyThuyet\BaiNop\ProjectQuestionManagement\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache
+D:\00-HuuTai\Hoctap\HCDH\HK2_2016-2017\HQTCSDL\LyThuyet\BaiNop\ProjectQuestionManagement\DTO\obj\Debug\DTO.dll
+D:\00-HuuTai\Hoctap\HCDH\HK2_2016-2017\HQTCSDL\LyThuyet\BaiNop\ProjectQuestionManagement\DTO\obj\Debug\DTO.pdb

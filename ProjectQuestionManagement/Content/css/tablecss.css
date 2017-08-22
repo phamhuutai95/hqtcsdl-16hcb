@@ -1,0 +1,30 @@
+﻿
+.table-fixed {
+  width: 960px;
+}
+.table-fixed tbody {
+  height: 320px;
+  overflow-y: auto;
+  width: 960px;
+}
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed tr,
+.table-fixed th {
+  display: block;
+}
+.table-fixed tbody td {
+  float: left;
+  height: 40px;
+}
+.table-fixed thead tr th {
+  float: left;
+}
+
+.truncate {
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+

@@ -1,0 +1,221 @@
+﻿@{
+    ViewBag.Title = "Thêm giáo viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h4 class="page-header">Nội dung chính</h4>
+    </div>
+</div>
+@using (Html.BeginForm("InsertTeacher", "Teacher", FormMethod.Post, new { @id = "frmTeacherInsert" }))
+{
+    <input type="hidden" id="hdFormType" name="hdFormType" value="Insert" />
+    <input type="hidden" id="hdListPermission" name="hdListPermission" value="" />
+    <input type="hidden" id="hdCurrentPage" name="hdCurrentPage" value="" />
+
+    <div class="row area-control">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label class="header-control col-lg-3 col-md-12">Họ tên</label>
+                <div class="col-lg-9 col-md-12">
+                    <input class="form-control" id="txtFullName" name="txtFullName" maxlength="50">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label class="header-control col-lg-3 col-md-12">Người quản lý</label>
+                <div class="col-lg-9 col-md-12">
+                    <select class="form-control" id="cboManage" name="cboManage" data-value="">
+                        <option value="">-- Chọn quản lý --</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row area-control">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label class="header-control col-lg-3 col-md-12">Ngày sinh</label>
+                <div class="col-lg-9 col-md-12">
+                    <div class='input-group date'>
+                        <input type='text' class="form-control" id='dtmBirthDate' name="dtmBirthDate" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label class="header-control col-lg-3 col-md-12">Số điện thoại</label>
+                <div class="col-lg-9 col-md-12">
+                    <input class="form-control" id="txtPhoneNumber" name="txtPhoneNumber" maxlength="12">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row area-control">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label class="header-control col-lg-3 col-md-12">Vai trò</label>
+                <div class="col-lg-9 col-md-12">
+                    <select class="form-control" id="cboRole" name="cboRole" data-value="">
+                        <option value="">-- Chọn vai trò --</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label class="header-control col-lg-3 col-md-12">Môn giảng dạy</label>
+                <div class="col-lg-9 col-md-12">
+                    <select class="form-control" id="cboSubject" name="cboSubject" data-value="">
+                        <option value="">-- Chọn môn dạy --</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row area-control">
+        <div class="col-lg-12">
+            <div class="form-group">
+                <label class="header-control col-lg-1 col-md-12" style="min-width:12%;">Địa chỉ</label>
+                <div class="col-lg-10 col-md-12">
+                    <textarea class="form-control" id="txaAddress" name="txaAddress" maxlength="1024"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h4 class="page-header">Phân quyền</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row area-control">
+            <div class="col-sm-12">
+                <div class="form-inline">
+                    <button type="button" class="btn btn-primary" id="btnInsertPermission" onclick="InsertPermission();" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Đang xử lý"><i class="fa fa-plus"></i>Thêm</button>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" id="btnInsertPermissionAll" onclick="InsertPermissionAll();" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Đang xử lý"><i class="fa fa-plus"></i>Thêm tất cả</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-blue">
+            <div class="panel-heading">
+                quyền
+            </div>
+
+            <table width="100%" class="table table-striped table-bordered table-hover" id="tblPermission">
+                <thead>
+                    <tr>
+                        <th style="width:8%;">Mã</th>
+                        <th>Mô tả</th>
+                        <th style="width:3%;"></th>
+                    </tr>
+                </thead>
+                <tbody id="ContentPermission">
+                    <tr><td colspan="12" class="table-content-null">Hiện không có nội dung</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="row area-control">
+        <div class="form-inline group-submit">
+            <button type="button" class="btn btn-primary" id="btnInsert" onclick="InsertTeacher();" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Đang xử lý"><i class="fa fa-plus"></i>Thêm</button>
+            <button type="button" class="btn btn-default" id="btnBack" onclick="BackManage();" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Đang xử lý"><i class="fa fa-remove"></i>Bỏ qua</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal quyền -->
+<div class="modal fade" id="ModalPermission" role="dialog">
+    <div class="modal-dialog" style="width:70%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" onclick="CloseInsertPermission();">&times;</button>
+                <h4 class="modal-title">Thêm quyền</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row area-control">
+                            <div class="col-sm-12">
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <input class="form-control" id="txtKeyWord" placeholder="Nội dung tìm kiếm">
+                                    </div>
+                                    <button type="button" class="btn btn-primary" id="btnSearch" onclick="SearchPermission();" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Đang xử lý"><i class="fa fa-search"></i>Tìm kiếm</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel panel-blue">
+                                    <div class="panel-heading">
+                                        quyền
+                                    </div>
+
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="tblModelPermission">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:3%;">STT</th>
+                                                <th style="width:8%;">Mã</th>
+                                                <th>Mô tả</th>
+                                                <th style="width:3%;"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="ContentModelPermission">
+                                            <tr><td colspan="12" class="table-content-null">Hiện không có nội dung</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" id="divPaging" style="display:none;">
+                            <div class="col-sm-5">
+                                <div class="dataTables_info" id="dataTables-example_info" role="status" aria-live="polite">Chỉ số phần tử <span id="page-from-index"></span> đến <span id="page-to-index"></span> trên <span id="total-record"><span>phần tử</div>
+                            </div>
+                            <div class="col-sm-7" id="divPagingIndex">
+                                <ul id="paging" class="pagination"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="CloseInsertPermission();">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        var visiblepages = "@ViewBag.intVisiblePages";
+    </script>
+
+    <script src="~/Scripts/CustomScripts/Teacher/InsertUpdateTeacher.js"></script>
+}
+

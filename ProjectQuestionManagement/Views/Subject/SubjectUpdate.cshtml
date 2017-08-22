@@ -1,0 +1,57 @@
+﻿@model DTO.SubjectDTO
+@{
+    ViewBag.Title = "Cập nhóm môn học";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h4 class="page-header">Nội dung chính</h4>
+    </div>
+</div>
+@using (Html.BeginForm("UpdateSubject", "Subject", FormMethod.Post, new { @id = "frmSubjectUpdate" }))
+{
+    <input type="hidden" id="hdFormType" name="hdFormType" value="Update" />
+    <input type="hidden" id="hdSubjectID" name="hdSubjectID" value="@(Model.SubjectID)" />
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-group">
+                <div class="form-inline">
+                    <label class="header-control col-sm-2">Mã môn học</label>
+                    <input class="form-control col-sm-9" style="width:20%;" id="txtSubjectID" name="txtSubjectID" maxlength="50" value="@(Model.SubjectID)" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-group">
+                <div class="form-inline">
+                    <label class="header-control col-sm-2">Tên nôn học</label>
+                    <input class="form-control col-sm-9" style="width:60%;" id="txtSubjectName" name="txtSubjectName" maxlength="255" value="@(Model.SubjectName)">
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="row area-control">
+        <div class="form-inline group-submit">
+            <button type="button" class="btn btn-primary" id="btnUpdate" onclick="UpdateSubject();" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Đang xử lý"><i class="fa fa-plus"></i>Cập nhật</button>
+            <button type="button" class="btn btn-default" id="btnBack" onclick="BackManage();" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Đang xử lý"><i class="fa fa-remove"></i>Bỏ qua</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        var visiblePages = "@ViewBag.intVisiblePages";
+    </script>
+
+    <script src="~/Scripts/CustomScripts/Subject/InsertUpdateSubject.js"></script>
+}
+

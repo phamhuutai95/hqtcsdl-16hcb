@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
+    <!-- MetisMenu CSS -->
+    <link href="/Scripts/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/Scripts/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="~/Content/css/style-custom.css" rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <link href="/Scripts/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    @RenderSection("heads", required: false)
+
+</head>
+<body>
+
+    @RenderBody()
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="~/Scripts/vendor/jquery/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/Library/notify.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/Scripts/vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="/Scripts/dist/js/sb-admin-2.js"></script>
+    <script src="~/Scripts/CustomScripts/XMLJS/JSMenuXML.js"></script>
+    <script src="~/Scripts/CustomScripts/LoginJS/Logout.js"></script>
+    <script src="~/Scripts/Library/jquery.twbsPagination.js"></script>
+    <script src="~/Scripts/Library/jquery.blockUI.js"></script>
+    <script src="~/Scripts/Library/jquery.form.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.js"></script>
+
+    <script type="text/javascript">
+        function showLoading(btnID) {
+            $("#" + btnID).button('loading');
+            $.blockUI({ message: null });
+        }
+
+        function hideLoading(btnID) {
+            $("#" + btnID).button('reset');
+            $.unblockUI();
+        }
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

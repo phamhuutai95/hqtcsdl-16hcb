@@ -1,0 +1,7 @@
+D:\00-HuuTai\Hoctap\HCDH\HK2_2016-2017\HQTCSDL\LyThuyet\BaiNop\ProjectQuestionManagement\DAO\bin\Debug\DAO.dll
+D:\00-HuuTai\Hoctap\HCDH\HK2_2016-2017\HQTCSDL\LyThuyet\BaiNop\ProjectQuestionManagement\DAO\bin\Debug\DAO.pdb
+D:\00-HuuTai\Hoctap\HCDH\HK2_2016-2017\HQTCSDL\LyThuyet\BaiNop\ProjectQuestionManagement\DAO\bin\Debug\DTO.dll
+D:\00-HuuTai\Hoctap\HCDH\HK2_2016-2017\HQTCSDL\LyThuyet\BaiNop\ProjectQuestionManagement\DAO\bin\Debug\DTO.pdb
+D:\00-HuuTai\Hoctap\HCDH\HK2_2016-2017\HQTCSDL\LyThuyet\BaiNop\ProjectQuestionManagement\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
+D:\00-HuuTai\Hoctap\HCDH\HK2_2016-2017\HQTCSDL\LyThuyet\BaiNop\ProjectQuestionManagement\DAO\obj\Debug\DAO.dll
+D:\00-HuuTai\Hoctap\HCDH\HK2_2016-2017\HQTCSDL\LyThuyet\BaiNop\ProjectQuestionManagement\DAO\obj\Debug\DAO.pdb
