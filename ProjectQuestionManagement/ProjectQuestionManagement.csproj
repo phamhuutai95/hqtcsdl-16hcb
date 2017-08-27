@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Global.asax.cs">
@@ -185,6 +186,10 @@
     <Content Include="Scripts\CustomScripts\LoginJS\ChangePass.js" />
     <Content Include="Scripts\CustomScripts\LoginJS\Login.js" />
     <Content Include="Scripts\CustomScripts\LoginJS\Logout.js" />
+    <Content Include="Scripts\CustomScripts\Question\Detail.js" />
+    <Content Include="Scripts\CustomScripts\Question\Insert.css" />
+    <Content Include="Scripts\CustomScripts\Question\Insert.js" />
+    <Content Include="Scripts\CustomScripts\Question\ManageQuestion.js" />
     <Content Include="Scripts\CustomScripts\Teacher\InsertUpdateTeacher.js" />
     <Content Include="Scripts\CustomScripts\Teacher\ManageTeacher.js" />
     <Content Include="Scripts\CustomScripts\XMLJS\JSMenuXML.js" />
@@ -360,6 +365,9 @@
     <Content Include="Views\Subject\SubjectDetail.cshtml" />
     <Content Include="Views\Subject\SubjectInsert.cshtml" />
     <Content Include="Views\Subject\SubjectUpdate.cshtml" />
+    <Content Include="Views\Question\Index.cshtml" />
+    <Content Include="Views\Question\Insert.cshtml" />
+    <Content Include="Views\Question\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAO\DAO.csproj">

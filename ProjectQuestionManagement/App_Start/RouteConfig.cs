@@ -65,6 +65,34 @@ namespace ProjectQuestionManagement
             );
             #endregion
 
+            #region Quản lý câu hỏi
+            routes.MapRoute(
+                name: "quan-ly-cau-hoi",
+                url: "quan-ly-cau-hoi",
+                defaults: new { controller = "Question", action = "Index" }
+            );
+
+            routes.MapRoute(
+                name: "quan-ly-cau-hoi/them",
+                url: "quan-ly-cau-hoi/them",
+                defaults: new { controller = "Question", action = "Insert" }
+            );
+
+            routes.MapRoute(
+                name: "quan-ly-cau-hoi/cap-nhat",
+                url: "quan-ly-cau-hoi/cap-nhat/{strID}",
+                defaults: new { controller = "Question", action = "Update", strSubjectID = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "quan-ly-cau-hoi/chi-tiet",
+                url: "quan-ly-cau-hoi/chi-tiet/{strID}",
+                defaults: new { controller = "Question", action = "Detail", strID = UrlParameter.Optional }
+            );
+            #endregion
+
+
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

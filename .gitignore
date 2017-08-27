@@ -254,3 +254,6 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+DAO/bin/Debug/DTO.dll
+DAO/bin/Debug/DAO.dll
+ProjectQuestionManagement/obj/Debug/ProjectQuestionManagement.dll

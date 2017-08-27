@@ -1,0 +1,210 @@
+﻿
+@{
+    ViewBag.Title = "Chi tiết câu hỏi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h4 class="page-header">Nội dung chính</h4>
+    </div>
+</div>
+@using (Html.BeginForm("UpdateProcess", "Question", FormMethod.Post, new { @id = "frmUpdate" }))
+{
+    <input type="hidden" id="hdFormType" name="hdFormType" value="Update" />
+
+
+    <div class="row area-control">
+
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label class="header-control col-lg-3 col-md-12">Mã câu hỏi</label>
+                <div class="col-lg-9 col-md-12">
+                    <input class="form-control" type="text" id="txtQID" name="txtQID" maxlength="50" min="0" max="10" value="@Html.Raw(@ViewBag.QuestionID)" disabled>
+                    <input type="hidden" id="hdupdatestridtxt" name="hdupdatestridtxt" value="@Html.Raw(@ViewBag.QuestionID)" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label class="header-control col-lg-3 col-md-12">Điểm dự kiến</label>
+                <div class="col-lg-9 col-md-12">
+                    <input class="form-control" type="number" id="txtScoreExpect" name="txtScoreExpect" maxlength="50" min="0" max="10" value="@Html.Raw(@ViewBag.ProposalScore)" disabled>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row area-control">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label class="header-control col-lg-3 col-md-12">Loại lựa chọn</label>
+                <div class="col-lg-9 col-md-12">
+                    <select class="form-control" id="cbochoicetype" name="cbochoicetype" data-value="" disabled>
+                        <option value="0" selected="selected">-- Một lựa chọn --</option>
+                        <option value="1">-- Nhiều lựa chọn --</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label class="header-control col-lg-3 col-md-12">Mức độ</label>
+                <div class="col-lg-9 col-md-12">
+                    <select class="form-control" id="cbolevel" name="cbolevel" data-value="" disabled>
+                        <option value="0" selected="selected">-- Dễ --</option>
+                        <option value="1">-- Vừa --</option>
+                        <option value="2">-- Khó --</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="row area-control">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label class="header-control col-lg-3 col-md-12">Hệ - môn học</label>
+                <div class="col-lg-9 col-md-12">
+                    <select class="form-control" id="cboHMH" name="cboHMH" data-value="" disabled>
+                        <option value="0" selected="selected" disabled>-- Chọn hệ-môn học --</option>
+                        @Html.Raw(ViewBag.HTMLComboTrainingSubject)
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row area-control">
+        <div class="col-lg-12">
+            <div class="form-group">
+                <div class="form-inline">
+                    <label class="header-control col-sm-2">Nội dung câu hỏi</label>
+                    <textarea class="form-control col-sm-9" rows="6" cols="160" id="taContent" name="taContent" maxlength="255" disabled>@Html.Raw(@ViewBag.QuestionContent)</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row area-control">
+        <div class="col-lg-12">
+            <div class="form-group">
+                <div class="form-inline">
+                    <label class="header-control col-sm-2">Tạo câu trả lời</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row area-control">
+        <div class="col-lg-12">
+            <div class="form-group">
+                <div class="form-inline">
+                    <div id="containerCreateAnswer">
+                        @Html.Raw(ViewBag.strHTMLAnswerList)
+                        <button type="button" class="btn btn-primary btnCreateAnswer" style='display:none;' onclick="openModalCA()">Tạo câu trả lời</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <input type="hidden" id="createAnswerhdnumberanswer" name="createAnswerhdnumberanswer" value="0">
+
+
+}
+
+<div class="row">
+    <div class="row area-control">
+        <div class="form-inline group-submit">
+           @Html.Raw(ViewBag.HTMLbtnUpdate)
+            <button type="button" class="btn btn-default" id="btnBack" onclick="BackManage();" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Đang xử lý"><i class="fa fa-remove"></i>Bỏ qua</button>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal tạo câu trả lời -->
+<div class="modal fade" id="ModalCreateAnswer" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Tạo câu trả lời</h4>
+            </div>
+
+            <div class="modal-body">
+                <div id="divMessage" data-id="">
+                    <label class="header-control col-sm-2">Nội dung câu trả lời</label>
+                    <textarea rows="6" class="form-control" style="min-width: 100%; resize: vertical; " id="createAnswertaContentA" name="createAnswertaContentA"> </textarea>
+                    <label><input type="checkbox" value="" id="createAnswercbRightA">Câu trả lời đúng</label>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="CreateAnswer();">Đồng ý</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Kết thúc Modal tạo câu trả lời -->
+<!-- Modal xem câu trả lời -->
+<div class="modal fade" id="ModalViewAnswer" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Xem câu trả lời</h4>
+            </div>
+
+            <div class="modal-body">
+                <div id="divMessage" data-id="">
+                    <input type="hidden" id="ViewAnswerhdnumbAnswer" value="" />
+                    <label class="header-control col-sm-2">Nội dung câu trả lời</label>
+                    <textarea rows="6" class="form-control" style="min-width: 100%; resize: vertical; " id="ViewAnswertaContentA" name="createAnswertaContentA" disabled> </textarea>
+                    <label><input type="checkbox" value="" id="ViewAnswercbRightA" disabled>Câu trả lời đúng</label>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="EditAnswer();" style='display:none;'>Đồng ý</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="DeleteAnswer();" style='display:none;'>Xóa</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Kết thúc Modal xem câu trả lời -->
+@section Scripts
+{
+    <script type="text/javascript">
+    var visiblePages = "@ViewBag.intVisiblePages";
+    </script>
+    <script>
+        var _numbAnswer = parseInt("@ViewBag.NumberAnswer");
+        var _numdelete = 0;
+        var _numbincreased = _numbAnswer;
+        var bg_TTSID = "@ViewBag.TrainningTypeSubjectID";
+        var bg_LVID = "@ViewBag.LevelID";
+        var bg_CTID = "@ViewBag.ChoiceTypeID";
+    </script>
+    <script src="~/Scripts/CustomScripts/Question/Detail.js"></script>
+}
+
+

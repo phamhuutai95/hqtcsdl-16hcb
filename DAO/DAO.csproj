@@ -44,6 +44,7 @@
     <Compile Include="LoginDAO.cs" />
     <Compile Include="PermissionDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionDAO.cs" />
     <Compile Include="SubjectDAO.cs" />
     <Compile Include="TeacherDAO.cs" />
     <Compile Include="XMLDAO.cs" />

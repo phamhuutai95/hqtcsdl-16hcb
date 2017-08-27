@@ -63,11 +63,11 @@ namespace DAO
                 return false;
             }
             object[] objKeyWords = new[] {
-                "@USENAME", strUsername,
+                "@USERNAME", strUsername,
                 "@KEY", strKey
             };
 
-            DataTable dtbKeyPermission = new DataConnect().callUSP("checkPerKey", objKeyWords);
+            DataTable dtbKeyPermission = new DataConnect().callUSP("USP_CHECKKEYPERMISSION", objKeyWords);
             if (dtbKeyPermission != null && dtbKeyPermission.Rows.Count != 0)
             {
                 return true;

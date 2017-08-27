@@ -243,5 +243,58 @@ namespace DAO
                 return false;
             }
         }
+
+
+
+
+        public DataTable callUSPNullable(string strusp_name, object[] objKeyWords)
+        {
+            DataTable dtbResult = new DataTable();
+            Connect();
+            try
+            {
+                //usp_name bỏ vào command
+                SqlCommand command = new SqlCommand(strusp_name, Connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                //Vòng lặp danh sách thông số
+                if (objKeyWords != null)
+                {
+                    int sizeParameter = objKeyWords.Count();
+                    for (int i = 0; i < sizeParameter; i += 2)
+                    {
+
+                        if (objKeyWords[i + 1] != null && !objKeyWords[i + 1].GetType().Equals(typeof(DataTable)))
+                        {
+                            command.Parameters.AddWithValue(Convert.ToString(objKeyWords[i]), (objKeyWords[i + 1]) ?? DBNull.Value);
+                        }
+                        else
+                        {
+                            command.Parameters.AddWithValue(Convert.ToString(objKeyWords[i]), (objKeyWords[i + 1])).SqlDbType = SqlDbType.Structured;   
+                        }
+                    }
+                }
+
+
+                SqlDataAdapter da = new SqlDataAdapter(command);
+                da.Fill(dtbResult);
+            }
+            catch (SqlException ex)
+            {
+                return null;
+            }
+            finally
+            {
+                Disconnect();
+            }
+
+            return dtbResult;
+        }
+
+
+
+
+
+
     }
 }
